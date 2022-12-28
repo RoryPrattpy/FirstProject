@@ -30,8 +30,7 @@ pub fn run(transport: Transport, addr: SocketAddr) {
         NetEvent::Message(endpoint, input_data) => {
             let message: FromClientMessage = bincode::deserialize(&input_data).unwrap();
             match message {
-                FromClientMessage::pos(_, value) => println!("y: {}", value),
-                FromClientMessage::pos(value, _) => println!("x: {}", value),
+                FromClientMessage::pos(value2, value) => println!("y: {}, x: {}", value, value2),
                 _ => println!("Something else"),
             }
             let messageo = FromServerMessage::pos(20., 20.);
