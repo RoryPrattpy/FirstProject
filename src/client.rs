@@ -32,8 +32,7 @@ pub fn run(transport: Transport, remote_addr: RemoteAddr) {
             NetEvent::Message(_, input_data) => {
                 let message: FromServerMessage = bincode::deserialize(&input_data).unwrap();
                 match message {
-                    FromServerMessage::pos(_, value) => println!("y: {}", value),
-                    FromServerMessage::pos(value, _) => println!("x: {}", value),
+                    FromServerMessage::pos(value2, value) => println!("y: {}, x: {}", value, value2),
                     _ => println!("Something else"),
                 }
             }
